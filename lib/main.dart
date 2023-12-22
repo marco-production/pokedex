@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pokedex/app/providers/pokemon_provider.dart';
 import 'package:pokedex/ui/screens/home_screen.dart';
+import 'package:pokedex/ui/screens/pokemon_details_screen.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -24,7 +25,8 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
         ),
         routes: {
-          '/home' : (context) => const HomeScreen()
+          '/home' : (context) => const HomeScreen(),
+          '/details' : (context) => const PokemonDetailsScreen(),
         },
         initialRoute: '/home',
       ),

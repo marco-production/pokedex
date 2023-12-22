@@ -9,6 +9,7 @@ class Pokemon {
   final int? weight;
   final int? height;
   final List<StatElement>? stats;
+  final String? description;
 
   Pokemon({
     required this.id,
@@ -18,11 +19,10 @@ class Pokemon {
     this.weight,
     this.height,
     this.stats,
+    this.description,
   });
 
   factory Pokemon.fromRawJson(String str) => Pokemon.fromJson(json.decode(str));
-
-  String toRawJson() => json.encode(toJson());
 
   factory Pokemon.fromJson(Map<String, dynamic> json) => Pokemon(
     id: json["id"],
@@ -32,17 +32,8 @@ class Pokemon {
     weight: json["weight"],
     height: json["height"],
     stats: json["stats"] != null ? List<StatElement>.from(json["stats"].map((x) => StatElement.fromJson(x))) : null,
+    description: json["description"],
   );
-
-  Map<String, dynamic> toJson() => {
-    "id": id,
-    "name": name,
-    "image": image,
-    "types": types != null ? List<dynamic>.from(types!.map((x) => x.toJson())) : null,
-    "weight": weight,
-    "height": height,
-    "stats": stats != null ? List<dynamic>.from(stats!.map((x) => x.toJson())) : null,
-  };
 }
 
 class StatElement {

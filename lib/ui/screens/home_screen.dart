@@ -63,7 +63,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
                     return Wrap(
                       alignment: WrapAlignment.start,
-                      children: pokemons.map<Widget>((pokemon) => PokeContainer(pokemon)).toList()
+                      children: pokemons.map<Widget>((pokemon) => PokeContainer(pokemon)
+                      ).toList()
                     );
                   }
                   else {
