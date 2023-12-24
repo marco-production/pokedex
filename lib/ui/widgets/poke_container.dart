@@ -31,10 +31,10 @@ class PokeContainer extends StatelessWidget {
                   Hero(
                     tag: pokemon.id,
                     child: SvgPicture.network(
-                      pokemon.image!,
-                      width: 80,
-                      height: 80,
-                    ),
+                        pokemon.image!,
+                        width: 80,
+                        height: 80,
+                      ),
                   ),
                   const SizedBox(height: 10),
                   Text(Capitalization.capitalize(pokemon.name)),

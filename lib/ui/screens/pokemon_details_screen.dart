@@ -87,7 +87,10 @@ class PokemonDetailsScreen extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            data.description != null  ? Center(child: Text(data.description!)) : const SizedBox(),
+                            data.description != null  ? Center(child: Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 15),
+                              child: Text(data.description!),
+                            )) : const SizedBox(),
                             const SizedBox(height: 20),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -112,7 +115,7 @@ class PokemonDetailsScreen extends StatelessWidget {
                               ],
                             ),
                             const SizedBox(height: 32),
-                            const Center(child: Text("PokeData", style: TextStyle(fontSize: 22))),
+                            const Center(child: Text("PokeData", style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold))),
                             const SizedBox(height: 15),
                             Column(
                               children: data.stats!.map<Widget>((element) => ProgressIndicator(name: element.stat.name, baseStarts: element.baseStat)).toList(),

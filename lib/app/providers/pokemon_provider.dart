@@ -8,15 +8,16 @@ class PokemonProvider extends ChangeNotifier {
 
   int _pokemonId = 0;
   final List<Pokemon> _pokemons = [];
-  final Uri uri = Uri.https('pokeapi.co', '/api/v2/pokemon');
+
 
   // Getters & Setters
   List<Pokemon> get pokemons => _pokemons;
 
   /// Get Pokemon List
-  Future<List<Pokemon>?> getPokemons(int offset, {int limit = 20}) async {
+  Future<List<Pokemon>> getPokemons(int offset, {int limit = 10}) async {
 
-    var response = await http.get(uri.replace(queryParameters: {'offset': offset.toString(), 'limit' : limit.toString()}));
+    final Uri uri = Uri.https('pokeapi.co', '/api/v2/pokemon', {'offset': offset.toString(), 'limit' : limit.toString()});
+    var response = await http.get(uri);
 
     if(response.statusCode == 200) {
       Map<String, dynamic> body = json.decode(response.body);
@@ -27,11 +28,11 @@ class PokemonProvider extends ChangeNotifier {
         Pokemon pokemon = Pokemon.fromJson(element);
         _pokemons.add(pokemon);
       }
-      
+
       return _pokemons;
     }
 
-    return null;
+    return Future.error("It's occurred an error.");
   }
 
   /// Get Pokemon Details
